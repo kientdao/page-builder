@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+     var data = google.visualization.arrayToDataTable([
+     ['Stories', 'Total Reads', { role: 'style' }, { role: 'link' } ],
+     ['A Quick Starter Guide to Leveraged Trading at BitMEX', 2678837, '#007C41', 'https://hackernoon.com/a-quick-starter-guide-to-using-leveraged-trading-at-bitmex-5383de4cb320' ],
+     
+     ['14 Patterns to Ace Any Coding Interview Question', 966850, '#007C41', '/your/custom/link' ],
+     
+     ['Spray, Pray, and Go Away: Investing is an Art', 926658, '#007C41', '/your/custom/link' ],
+     
+     ['How to Use DeepAR For AR Effects on Amazon IVS Live Streams', 862224, 'color: #007C41', '/your/custom/link' ],
+     
+     ['How Do I Build High-Volume dApps With Ultra-Low Gas Fees? Like a #BAS', 735661, 'color: #007C41', '/your/custom/link' ],
+     
+     ['How it feels to learn JavaScript in 2016', 720518, 'color: #007C41', '/your/custom/link' ],
+     
+     ['Learn Blockchains by Building One', 702782, 'color: #007C41', '/your/custom/link' ],
+     
+     ['Why Would an NFT Marketplace Freeze an Account?', 697161, 'color: #007C41', '/your/custom/link' ],
+     
+     ['What is a Full Stack Developer and How Do You Become One?', 674650, 'color: #007C41', '/your/custom/link' ],
+     
+     ['50+ Data Structure and Algorithms Interview Questions for Programmers', 660975, 'color: #007C41', '/your/custom/link' ],
+     
+     ['How to Create Your Own Cryptocurrency: A Beginners Guide', 598026, 'color: #007C41', '/your/custom/link' ]
+     
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Most Read Stories on HackerNoon.com",
+        width: 1440,
+        height: 400,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      google.visualization.events.addListener(chart, 'select', function (e) {
+            var selection = chart.getSelection();
+                if (selection.length) {
+                    var row = selection[0].row;
+                    let link =data.getValue(row, 3);
+                    location.href = link;
+                }
+        });
+      chart.draw(view, options);
+  }
+  </script>
+<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+</head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
