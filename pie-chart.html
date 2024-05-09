@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Country', 'Percentage'],
+          ['United States 🇺🇸', 41],
+          ['India 🇮🇳', 17],
+          ['Singapore 🇸🇬', 9],
+          ['United Kingdom 🇬🇧 ', 7],
+          ['Germany 🇩🇪', 7],
+          ['Canada 🇨🇦', 5],
+          ['China 🇨🇳', 4],
+          ['France 🇫🇷', 4],
+          ['Brazil 🇧🇷', 3],
+          ['Spain 🇪🇸', 3]
+        ]);
+        var options = {
+          title: 'Demographic of HackerNoon.com'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="piechart" style="width: 900px; height: 500px"></div>
+  </body>
+</html>
